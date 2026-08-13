@@ -6,7 +6,7 @@
 ## 배포 URL
 
 - Vercel: 배포 후 등록
-- GitHub: 저장소 생성 후 등록
+- GitHub: https://github.com/eldalya1215/a1-3-ai-routine
 
 ## 핵심 기능
 
@@ -81,6 +81,12 @@ Vercel 개발 서버에서 확인해야 합니다.
 
 - [서비스 기획서](docs/service-plan.md)
 - [AI 코딩 도구 사용 기록](docs/ai-coding-log.md)
+
+## 증빙 자료
+
+- `evidence/01-desktop-home.png`: 데스크톱 전체 화면
+- `evidence/02-mobile-menu.png`: 모바일 반응형과 메뉴
+- `evidence/03-ai-result.png`: 사용자 입력과 AI 결과 출력
 
 ## 테스트
 
