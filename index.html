@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="50대 여성을 위한 AI 맞춤 5분 저강도 운동 루틴 추천 서비스">
+  <title>오늘도 웃는 몸 — AI 5분 루틴</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">본문으로 건너뛰기</a>
+  <header class="site-header">
+    <a class="brand" href="#home" aria-label="오늘도 웃는 몸 홈"><span>웃는 몸</span><small>AI 5분 루틴</small></a>
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav">메뉴</button>
+    <nav id="main-nav" aria-label="주요 메뉴">
+      <a href="#home">홈</a><a href="#coach">AI 코치</a><a href="#guide">이용 안내</a><a href="#safety">안전 원칙</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="home">
+      <div class="hero-copy">
+        <p class="eyebrow">오늘의 몸 상태에서 시작하세요</p>
+        <h1>딱 5분,<br><em>내 몸에 맞는</em> 움직임</h1>
+        <p>컨디션과 불편한 부위를 알려주면 AI가 집에서 따라 할 수 있는 저강도 루틴을 제안합니다.</p>
+        <a class="button" href="#coach">내 루틴 만들기</a>
+        <ul class="trust-list"><li>큰 글자와 쉬운 설명</li><li>무리 없는 저강도 동작</li><li>통증 시 즉시 중단 안내</li></ul>
+      </div>
+      <div class="hero-visual" aria-label="의자에서 편안하게 다리를 펴는 중년 여성 일러스트">
+        <div class="sun"></div><div class="chair"></div><div class="person"><span class="head"></span><span class="body"></span><span class="leg one"></span><span class="leg two"></span></div>
+        <div class="floating-card"><strong>오늘의 목표</strong><span>가볍게 5분</span></div>
+      </div>
+    </section>
+
+    <section class="coach-section" id="coach" aria-labelledby="coach-title">
+      <div class="section-heading"><p class="eyebrow">AI 맞춤 추천</p><h2 id="coach-title">오늘 몸은 어떤가요?</h2><p>세 가지만 알려주세요. 지금 가능한 움직임을 정리해 드릴게요.</p></div>
+      <div class="coach-grid">
+        <form id="routine-form" novalidate>
+          <fieldset><legend>오늘의 컨디션</legend><div class="choice-grid">
+            <label><input type="radio" name="condition" value="좋음"><span>😊 좋아요</span></label>
+            <label><input type="radio" name="condition" value="보통"><span>🙂 보통이에요</span></label>
+            <label><input type="radio" name="condition" value="피곤"><span>😌 조금 피곤해요</span></label>
+          </div></fieldset>
+          <label class="field">불편한 부위<select name="area" required><option value="">선택해 주세요</option><option>없음</option><option>무릎</option><option>허리</option><option>어깨</option><option>목</option></select></label>
+          <label class="field">가능한 시간<select name="minutes" required><option value="">선택해 주세요</option><option value="3">3분</option><option value="5">5분</option><option value="10">10분</option></select></label>
+          <label class="field">추가로 알려주실 내용 <span>(선택)</span><textarea name="note" maxlength="300" rows="3" placeholder="예: 오래 앉아 있어서 허리가 뻐근해요"></textarea><small><span id="char-count">0</span>/300자</small></label>
+          <button class="button submit" type="submit">AI 루틴 추천받기</button>
+          <p class="form-note">의료 진단이나 치료를 대신하지 않습니다. 날카로운 통증, 어지럼증, 호흡 곤란이 있으면 운동을 중단하세요.</p>
+        </form>
+
+        <article class="result-card" id="result" aria-live="polite" aria-busy="false">
+          <div class="empty-state"><span>🌿</span><h3>나만의 루틴이 여기에 표시돼요</h3><p>왼쪽 정보를 선택하고 추천 버튼을 눌러주세요.</p></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="guide-section" id="guide" aria-labelledby="guide-title">
+      <div class="section-heading"><p class="eyebrow">쉬운 이용 방법</p><h2 id="guide-title">3단계면 충분해요</h2></div>
+      <ol class="steps"><li><b>1</b><h3>몸 상태 선택</h3><p>컨디션, 불편한 부위와 가능한 시간을 알려주세요.</p></li><li><b>2</b><h3>AI 추천 확인</h3><p>준비운동부터 마무리까지 쉬운 설명으로 확인하세요.</p></li><li><b>3</b><h3>내 속도로 실천</h3><p>통증이 없는 범위에서 천천히 따라 하세요.</p></li></ol>
+    </section>
+
+    <section class="safety-section" id="safety" aria-labelledby="safety-title">
+      <div><p class="eyebrow">안전이 먼저예요</p><h2 id="safety-title">몸의 신호를 가장 먼저 들어주세요</h2><p>AI 추천은 일반적인 웰니스 정보입니다. 기존 질환이나 수술 이력이 있다면 운동 전 의료 전문가와 상담하세요.</p></div>
+      <ul><li><strong>통증 없는 범위</strong><span>불편하면 동작 범위를 줄이거나 멈추세요.</span></li><li><strong>안정적인 환경</strong><span>미끄럽지 않은 바닥과 단단한 의자를 사용하세요.</span></li><li><strong>천천히 호흡</strong><span>숨을 참지 말고 자연스럽게 움직이세요.</span></li></ul>
+    </section>
+  </main>
+
+  <footer><strong>오늘도 웃는 몸</strong><p>작은 움직임이 만드는 편안한 하루</p><a href="#home">맨 위로</a></footer>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
+

@@ -1,0 +1,8 @@
+.env
+.env.local
+__pycache__/
+*.pyc
+.vercel/
+node_modules/
+evidence/*.tmp
+
