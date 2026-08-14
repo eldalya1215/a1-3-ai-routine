@@ -32,8 +32,10 @@
 ├─ js/app.js
 ├─ docs/
 │  ├─ service-plan.md
-│  └─ ai-coding-log.md
+│  ├─ ai-coding-log.md
+│  └─ submission-checklist.md
 ├─ evidence/
+├─ .env.example
 ├─ index.html
 ├─ requirements.txt
 └─ vercel.json
@@ -81,6 +83,7 @@ Vercel 개발 서버에서 확인해야 합니다.
 
 - [서비스 기획서](docs/service-plan.md)
 - [AI 코딩 도구 사용 기록](docs/ai-coding-log.md)
+- [최종 제출 체크리스트](docs/submission-checklist.md)
 
 ## 증빙 자료
 
@@ -98,3 +101,12 @@ python scripts/test_api.py
 브라우저 테스트는 데스크톱·모바일 레이아웃, 빈 입력 안내와 AI 결과 렌더링을
 검증하며 `evidence/`에 제출용 스크린샷을 생성합니다. Python 테스트는 잘못된 입력과
 API 키 누락 시 상태 코드를 검증합니다.
+
+브라우저 테스트에는 Playwright가 필요합니다. 현재 과제 작업공간에서는 상위 폴더의
+Playwright 설치를 사용하며, 새 환경에서는 Playwright를 먼저 설치해야 합니다.
+
+## 제출 전 확인
+
+- [제출 체크리스트](docs/submission-checklist.md)에서 필수 5종과 최종 동작을 확인합니다.
+- 실제 API 키는 문서·코드·스크린샷에 기록하지 않습니다.
+- 배포 환경 변수 변경 후에는 Production 재배포와 실제 AI 호출을 다시 확인합니다.
