@@ -5,7 +5,7 @@
 
 ## 배포 URL
 
-- Vercel: 배포 후 등록
+- Vercel: https://a1-3-ai-routine.vercel.app
 - GitHub: https://github.com/eldalya1215/a1-3-ai-routine
 
 ## 핵심 기능
