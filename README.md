@@ -12,7 +12,7 @@
 
 - 홈, AI 코치, 이용 안내, 안전 원칙 4개 섹션과 메뉴 이동
 - 모바일·태블릿·데스크톱 반응형 레이아웃
-- OpenAI API 기반 맞춤 루틴 생성
+- Gemini API 무료 등급 기반 맞춤 루틴 생성
 - 빈 입력, API 오류, 타임아웃 사용자 안내
 - 의료 진단 배제와 안전 중단 기준
 
@@ -20,7 +20,7 @@
 
 - Frontend: HTML, CSS, Vanilla JavaScript
 - Backend: Vercel Serverless Functions, Python 3.12
-- AI: OpenAI Chat Completions API
+- AI: Google Gemini API (`gemini-2.5-flash-lite`)
 - Deploy: Vercel
 
 ## 구조
@@ -47,7 +47,7 @@ API 키는 코드에 저장하지 않습니다. 로컬 `.env.local` 또는 Verce
 다음 값을 등록합니다.
 
 ```text
-OPENAI_API_KEY=발급받은_API_키
+GEMINI_API_KEY=발급받은_Gemini_API_키
 ```
 
 `.env*` 파일은 Git에 커밋하지 않습니다. 키 노출이 의심되면 즉시 폐기하고 새 키를
@@ -68,7 +68,7 @@ Vercel 개발 서버에서 확인해야 합니다.
 
 1. GitHub 저장소에 프로젝트를 푸시합니다.
 2. Vercel에서 저장소를 Import합니다.
-3. Environment Variables에 `OPENAI_API_KEY`를 등록합니다.
+3. Environment Variables에 `GEMINI_API_KEY`를 등록합니다.
 4. Deploy 후 공개 URL에서 메뉴, 반응형, 정상·오류 입력을 확인합니다.
 
 ## 동작 흐름 설명
@@ -76,7 +76,7 @@ Vercel 개발 서버에서 확인해야 합니다.
 - HTML은 입력 폼과 결과 영역의 구조를 정의합니다.
 - CSS는 색상, 배치와 화면 크기별 반응형 표현을 담당합니다.
 - JavaScript는 입력을 검증하고 `fetch('/api/routine')` 요청을 보낸 뒤 응답을 화면에 반영합니다.
-- `api/routine.py`는 요청을 검증하고 서버의 환경 변수로 OpenAI API를 호출하는 Vercel Serverless Function입니다.
+- `api/routine.py`는 요청을 검증하고 서버의 환경 변수로 Gemini API를 호출하는 Vercel Serverless Function입니다.
 - 로컬과 배포 환경은 URL·환경 변수·실행 런타임이 다르므로 배포 후 동일 테스트를 다시 수행합니다.
 
 ## 문서

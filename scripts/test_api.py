@@ -21,7 +21,7 @@ def call(payload, api_key=None):
     instance.send_header = lambda *_: None
     instance.end_headers = lambda: None
     instance.wfile = io.BytesIO()
-    env = {"OPENAI_API_KEY": api_key} if api_key else {}
+    env = {"GEMINI_API_KEY": api_key} if api_key else {}
     with mock.patch.dict(os.environ, env, clear=True):
         instance.do_POST()
     captured["body"] = json.loads(instance.wfile.getvalue())
@@ -33,4 +33,3 @@ assert invalid["status"] == 400
 missing_key = call({"condition": "보통", "area": "무릎", "minutes": 5})
 assert missing_key["status"] == 503
 print("통과: 잘못된 입력 400 + API 키 누락 503")
-

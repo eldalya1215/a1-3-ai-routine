@@ -32,7 +32,7 @@ class handler(BaseHTTPRequestHandler):
             if condition not in ALLOWED_CONDITIONS or area not in ALLOWED_AREAS or minutes not in ALLOWED_MINUTES:
                 return self._json(400, {"error": "필수 항목을 올바르게 선택해 주세요."})
 
-            api_key = os.environ.get("OPENAI_API_KEY")
+            api_key = os.environ.get("GEMINI_API_KEY")
             if not api_key:
                 return self._json(503, {"error": "AI 서비스 설정을 확인 중입니다. 잠시 후 다시 시도해 주세요."})
 
@@ -45,27 +45,29 @@ class handler(BaseHTTPRequestHandler):
                 }, "required": ["title", "summary", "steps", "safety"], "additionalProperties": False
             }
             prompt = f"컨디션: {condition}, 불편한 부위: {area}, 가능 시간: {minutes}분, 추가 메모: {note or '없음'}"
+            system = "당신은 50대 여성을 위한 안전 중심 웰니스 운동 안내자입니다. 의료 진단이나 치료를 주장하지 말고, 통증 없는 범위의 의자 기반 저강도 동작을 쉬운 한국어로 제안하세요. 날카로운 통증, 어지럼증, 호흡곤란 시 즉시 중단 안내를 포함하세요."
             payload = {
-                "model": "gpt-4o-mini",
-                "messages": [
-                    {"role": "system", "content": "당신은 50대 여성을 위한 안전 중심 웰니스 운동 안내자입니다. 의료 진단이나 치료를 주장하지 말고, 통증 없는 범위의 의자 기반 저강도 동작을 쉬운 한국어로 제안하세요. 날카로운 통증, 어지럼증, 호흡곤란 시 즉시 중단 안내를 포함하세요."},
-                    {"role": "user", "content": prompt}
-                ],
-                "response_format": {"type": "json_schema", "json_schema": {"name": "routine", "strict": True, "schema": schema}},
-                "temperature": 0.5
+                "system_instruction": {"parts": [{"text": system}]},
+                "contents": [{"role": "user", "parts": [{"text": prompt}]}],
+                "generationConfig": {
+                    "responseMimeType": "application/json",
+                    "responseJsonSchema": schema,
+                    "temperature": 0.5,
+                    "maxOutputTokens": 1200
+                }
             }
-            request = urllib.request.Request("https://api.openai.com/v1/chat/completions", data=json.dumps(payload).encode(), headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"}, method="POST")
+            url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent"
+            request = urllib.request.Request(url, data=json.dumps(payload).encode(), headers={"x-goog-api-key": api_key, "Content-Type": "application/json"}, method="POST")
             with urllib.request.urlopen(request, timeout=15) as response:
                 ai_data = json.loads(response.read())
-            routine = json.loads(ai_data["choices"][0]["message"]["content"])
+            routine = json.loads(ai_data["candidates"][0]["content"]["parts"][0]["text"])
             return self._json(200, routine)
         except (ValueError, json.JSONDecodeError):
             return self._json(400, {"error": "입력 형식을 확인해 주세요."})
         except urllib.error.HTTPError as error:
-            message = "AI 요청 한도를 확인하거나 잠시 후 다시 시도해 주세요." if error.code in (429, 500, 502, 503) else "AI 요청을 처리하지 못했습니다."
+            message = "무료 AI 요청 한도를 확인하거나 잠시 후 다시 시도해 주세요." if error.code in (429, 500, 502, 503) else "AI 요청을 처리하지 못했습니다."
             return self._json(502, {"error": message})
         except TimeoutError:
             return self._json(504, {"error": "AI 응답이 늦어 요청을 중단했습니다."})
         except Exception:
             return self._json(500, {"error": "예상하지 못한 오류가 발생했습니다. 잠시 후 다시 시도해 주세요."})
-

@@ -16,7 +16,7 @@
 - [x] `fetch('/api/routine')` 입력 → 요청 → 결과 렌더링
 - [x] 모바일 390px·데스크톱 1440px 반응형 검증
 - [x] 빈 입력, API 오류, 20초 타임아웃 안내
-- [x] API 키를 `OPENAI_API_KEY` 환경 변수로만 사용
+- [x] API 키를 `GEMINI_API_KEY` 환경 변수로만 사용
 - [x] 의료 진단 배제와 운동 중단 안전 기준 표시
 
 ## 자동 검증 결과
@@ -27,7 +27,7 @@
 - [x] API 키 누락 503 응답
 - [x] 데스크톱·모바일·빈 입력·AI 결과 렌더링 브라우저 테스트
 - [x] Vercel Production 배포 상태 Ready 및 메인 화면 확인
-- [ ] Vercel `OPENAI_API_KEY` 저장 후 실제 OpenAI 응답 확인
+- [ ] Vercel `GEMINI_API_KEY` 저장 후 실제 Gemini 응답 확인
 - [x] 최신 로컬 커밋을 GitHub `main`에 push
 
 마지막 미완료 항목은 실제 API 키 입력이 필요한 단계입니다. 완료 후 체크하고

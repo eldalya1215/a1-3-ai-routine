@@ -14,7 +14,7 @@ const browser = spawnSync(process.execPath, [path.join(root, 'scripts/test-and-c
 process.stdout.write(browser.stdout); process.stderr.write(browser.stderr);
 if (browser.status !== 0) process.exit(browser.status || 1);
 const source = fs.readFileSync(path.join(root, 'api/routine.py'), 'utf8');
-if (!source.includes('os.environ.get("OPENAI_API_KEY")')) throw new Error('환경 변수 사용 확인 실패');
+if (!source.includes('os.environ.get("GEMINI_API_KEY")')) throw new Error('환경 변수 사용 확인 실패');
 const textFiles = required.filter((file) => /\.(html|css|js|py|md|json|txt|example)$/.test(file));
 const combined = textFiles.map((file) => fs.readFileSync(path.join(root, file), 'utf8')).join('\n');
 if (/sk-(?:proj-)?[A-Za-z0-9_-]{16,}/.test(combined)) throw new Error('API 키로 보이는 문자열 발견');
