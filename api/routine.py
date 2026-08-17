@@ -56,7 +56,7 @@ class handler(BaseHTTPRequestHandler):
                     "maxOutputTokens": 1200
                 }
             }
-            url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent"
+            url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-flash-lite:generateContent"
             request = urllib.request.Request(url, data=json.dumps(payload).encode(), headers={"x-goog-api-key": api_key, "Content-Type": "application/json"}, method="POST")
             with urllib.request.urlopen(request, timeout=15) as response:
                 ai_data = json.loads(response.read())

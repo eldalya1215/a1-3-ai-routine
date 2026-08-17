@@ -20,7 +20,7 @@
 
 - Frontend: HTML, CSS, Vanilla JavaScript
 - Backend: Vercel Serverless Functions, Python 3.12
-- AI: Google Gemini API (`gemini-2.5-flash-lite`)
+- AI: Google Gemini API (`gemini-3.1-flash-lite`)
 - Deploy: Vercel
 
 ## 구조

@@ -50,4 +50,4 @@ A1-3 요구사항을 만족하는 50대 여성 대상 AI 5분 운동 추천 웹 
 OpenAI API 키는 정상 등록했지만 계정 크레딧이 없어 실제 요청이 한도 오류로
 거절되었습니다. 과제 진행 중 결제를 피하기 위해 Gemini API 무료 등급으로 전환했습니다.
 백엔드 환경 변수는 `GEMINI_API_KEY`, 모델은 안정 버전인
-`gemini-2.5-flash-lite`를 사용하고 JSON Schema 기반 구조화 출력을 유지했습니다.
+현재 무료 티어를 지원하는 `gemini-3.1-flash-lite`를 사용하고 JSON Schema 기반 구조화 출력을 유지했습니다.
