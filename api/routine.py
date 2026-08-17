@@ -65,6 +65,8 @@ class handler(BaseHTTPRequestHandler):
         except (ValueError, json.JSONDecodeError):
             return self._json(400, {"error": "입력 형식을 확인해 주세요."})
         except urllib.error.HTTPError as error:
+            error_body = error.read().decode("utf-8", errors="replace")[:2000]
+            print(f"Gemini HTTP error {error.code}: {error_body}")
             message = "무료 AI 요청 한도를 확인하거나 잠시 후 다시 시도해 주세요." if error.code in (429, 500, 502, 503) else "AI 요청을 처리하지 못했습니다."
             return self._json(502, {"error": message})
         except TimeoutError:
