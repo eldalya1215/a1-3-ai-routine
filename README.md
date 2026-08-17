@@ -90,6 +90,7 @@ Vercel 개발 서버에서 확인해야 합니다.
 - `evidence/01-desktop-home.png`: 데스크톱 전체 화면
 - `evidence/02-mobile-menu.png`: 모바일 반응형과 메뉴
 - `evidence/03-ai-result.png`: 사용자 입력과 AI 결과 출력
+- `evidence/04-ai-live-gemini.png`: 배포 URL에서 실제 Gemini 응답이 표시된 최종 화면
 
 ## 테스트
 
